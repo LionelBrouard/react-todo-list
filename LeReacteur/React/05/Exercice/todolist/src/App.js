@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 // import Content from "./components/Content";
 import Header from "./components/Header";
 
 function App() {
   const [task, setTask] = useState("");
   const [addTask, setAddTask] = useState([]);
+  const [trash, setTrash] = useState([]);
 
   return (
     <>
@@ -16,10 +17,29 @@ function App() {
       <div>
         {addTask.map((elem, index) => {
           return (
-            <ul key={index}>
+            <ul className="check" key={index}>
               <li>
-                <input type="checkbox" />
-                {elem}
+                <input
+                  // id="toggle1"
+                  type="checkbox"
+                  onClick={() => {
+                    // setCheckBox(checkBox);
+                  }}
+                />
+                <label>
+                  {elem}
+                  <button
+                    className="trash"
+                    onClick={() => {
+                      const newTrash = [...trash];
+                      newTrash.push(addTask);
+                      setTrash(newTrash);
+                      // addTask.shift();
+                    }}
+                  >
+                    Trash
+                  </button>
+                </label>
               </li>
             </ul>
           );
@@ -47,17 +67,21 @@ function App() {
             </button>
           </div>
         </>
-        <div className="taskok">
-          {addTask.map((elem, index) => {
+        <div className="confirmTrash">
+          {trash.map((item, index) => {
             return (
               <ul key={index}>
-                <li>{elem}</li>
+                <li>{item}</li>
               </ul>
             );
           })}
         </div>
       </div>
+      <div className="footer">
+        <Footer />
+      </div>
     </>
   );
 }
+
 export default App;
