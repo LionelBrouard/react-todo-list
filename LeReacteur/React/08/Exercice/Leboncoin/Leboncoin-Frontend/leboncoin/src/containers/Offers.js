@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UniqueOffer from "../components/UniqueOffer";
 import axios from "axios";
-import Logo from "../assets/images/logoLBC.png";
 
 function Offers() {
   const [data, setData] = useState([]);
@@ -14,7 +13,6 @@ function Offers() {
         "https://leboncoin-backend-neil.herokuapp.com/"
       );
       setData(response.data);
-
       setIsLoading(false);
     };
     fetchData();
@@ -26,12 +24,16 @@ function Offers() {
         <p>Chargement en cours</p>
       ) : (
         <div>
-          <div className="header">
-            <div className="wrapper">
-              <img src={Logo} className="logo"></img>
-            </div>
-          </div>
-          <UniqueOffer />
+          {data.offers.map((elem, index) => {
+            return (
+              <>
+                <Link to={"/offer/" + elem._id}>
+                  <UniqueOffer {...elem} />
+                </Link>
+              </>
+            );
+          })}
+
           <br />
         </div>
       )}
