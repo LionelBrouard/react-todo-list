@@ -1,0 +1,45 @@
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fafafa;
+}
+h2 {
+  font-size: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: #151965;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.header {
+  width: 1200px;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  width: 1200px;
+
+  margin: 0 auto;
+  color: #151965;
+}
+
+.generaloffer {
+  margin: 0 auto;
+  width: 50%;
+  background-color: white;
+  box-shadow: 3px 3px 3px silver;
+  margin-top: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.presentationgames {
+}
